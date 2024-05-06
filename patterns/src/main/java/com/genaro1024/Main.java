@@ -1,8 +1,17 @@
 package com.genaro1024;
 
+import com.genaro1024.behaviorpatterns.pipeline.Pipeline;
+import com.genaro1024.behaviorpatterns.pipeline.RemoveWhitespaceHandler;
+import com.genaro1024.behaviorpatterns.pipeline.ToBase64Handler;
+import com.genaro1024.behaviorpatterns.pipeline.ToUpperCaseHandler;
+import com.genaro1024.behaviorpatterns.pipelinefunc.RemoveWhitespaceHandlerFunc;
+import com.genaro1024.behaviorpatterns.pipelinefunc.ToBase64HandlerFunc;
+import com.genaro1024.behaviorpatterns.pipelinefunc.ToUpperCaseHandlerFunc;
 import com.genaro1024.creationpatterns.singleton.Singleton;
+import java.util.function.Function;
 
 public class Main {
+    @SuppressWarnings({ "rawtypes", "unchecked" })
     public static void main(String[] args) {
         System.out.println("################ CREATION PATTERNS ################");
         System.out.println("#################### SINGLETON ####################");
@@ -12,6 +21,27 @@ public class Main {
         System.out.println("singleton02:"+singleton02.getValue());
         System.out.println("##################### BUILDER ################@####");
 
+        System.out.println("################ BEHAVIOR PATTERNS ################");
+        System.out.println("#################### PIPELINE #####################");
+
+        Pipeline pipeline = new Pipeline<String,String>(new ToUpperCaseHandler())
+                                            .addHandler(new RemoveWhitespaceHandler())
+                                            .addHandler(new ToBase64Handler());
+
+        String pipelineResult = (String) pipeline.execute("Hello World");                                    
+        System.out.println("Result:"+ pipelineResult);
+
+        System.out.println("#################### PIPELINE#####################");
+
+        Function<String, String> pipelinefunc = text ->
+                                                new ToUpperCaseHandlerFunc().toUpperCase()
+                                                .andThen(new RemoveWhitespaceHandlerFunc().removeWhitespace() )
+                                                .andThen(new ToBase64HandlerFunc().toBase64())
+                                                .apply(text);
+
+        String pipeResult = pipelinefunc.apply("Hello World");
+        System.out.println("Result:"+ pipeResult);
+                                            
 
     }
 }
