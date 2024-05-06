@@ -1,5 +1,6 @@
 package com.genaro1024;
 
+import com.genaro1024.behaviorpatterns.iterator.Box;
 import com.genaro1024.behaviorpatterns.pipeline.Pipeline;
 import com.genaro1024.behaviorpatterns.pipeline.RemoveWhitespaceHandler;
 import com.genaro1024.behaviorpatterns.pipeline.ToBase64Handler;
@@ -31,7 +32,7 @@ public class Main {
         String pipelineResult = (String) pipeline.execute("Hello World");                                    
         System.out.println("Result:"+ pipelineResult);
 
-        System.out.println("#################### PIPELINE#####################");
+        System.out.println("#################### PIPELINE #####################");
 
         Function<String, String> pipelinefunc = text ->
                                                 new ToUpperCaseHandlerFunc().toUpperCase()
@@ -41,6 +42,14 @@ public class Main {
 
         String pipeResult = pipelinefunc.apply("Hello World");
         System.out.println("Result:"+ pipeResult);
+
+        System.out.println("#################### ITERATOR #####################");
+
+        Box box = new Box(new String[]{"Hello", "World", "Car", "Box", "Dog", "Cat"});
+        while(box.hasNext()){
+            String text = box.getNext();
+            System.out.println("Item:"+ text);
+        }
                                             
 
     }
