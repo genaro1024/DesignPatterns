@@ -1,6 +1,8 @@
 package com.genaro1024.behaviorpatterns.iterator;
 
+import lombok.Getter;
 
+@Getter
 public class Box implements Iterator<String> {
 
     private int currentPosition = 0;
@@ -19,7 +21,7 @@ public class Box implements Iterator<String> {
 
     @Override
     public boolean hasNext() {
-        if(currentPosition<content.length-1)
+        if(currentPosition<content.length)
             return true;
         return false;
     }
