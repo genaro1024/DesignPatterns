@@ -19,8 +19,4 @@ public class RunPrototype {
     public static String generateMenu(){
         return "Prototype";
     }
-
-    public static Runnable getRunnable(){
-        return ()->Run();
-    }
 }

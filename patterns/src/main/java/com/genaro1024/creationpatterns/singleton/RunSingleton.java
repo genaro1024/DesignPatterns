@@ -12,8 +12,4 @@ public class RunSingleton {
     public static String generateMenu(){
         return "Singleton";
     }  
-    
-    public static Runnable getRunnable(){
-        return ()->Run();
-    }
 }
