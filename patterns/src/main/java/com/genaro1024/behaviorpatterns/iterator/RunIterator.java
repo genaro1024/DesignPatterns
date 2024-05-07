@@ -9,5 +9,9 @@ public class RunIterator {
             String text = box.getNext();
             System.out.println("Item"+position+":"+ text);
         }
+       
     }
+    public static String generateMenu(){
+        return "Iterator";
+    }     
 }

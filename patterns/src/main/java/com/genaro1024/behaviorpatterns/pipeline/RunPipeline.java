@@ -10,4 +10,8 @@ public class RunPipeline {
         String pipelineResult = (String) pipeline.execute("Hello World");                                    
         System.out.println("Result:"+ pipelineResult);
     }
+    public static String generateMenu(){
+        return "Pipeline";
+    }
+    
 }

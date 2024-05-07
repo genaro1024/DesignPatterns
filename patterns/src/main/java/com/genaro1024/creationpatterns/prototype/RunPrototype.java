@@ -15,4 +15,12 @@ public class RunPrototype {
         System.out.println("circle01:"+ circle01.toString());
         System.out.println("circle02:"+ circle02.toString());
     }
+
+    public static String generateMenu(){
+        return "Prototype";
+    }
+
+    public static Runnable getRunnable(){
+        return ()->Run();
+    }
 }

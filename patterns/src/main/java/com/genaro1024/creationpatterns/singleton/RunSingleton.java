@@ -8,4 +8,12 @@ public class RunSingleton {
         System.out.println("singleton01:"+singleton01.getValue());
         System.out.println("singleton02:"+singleton02.getValue());        
     }
+
+    public static String generateMenu(){
+        return "Singleton";
+    }  
+    
+    public static Runnable getRunnable(){
+        return ()->Run();
+    }
 }

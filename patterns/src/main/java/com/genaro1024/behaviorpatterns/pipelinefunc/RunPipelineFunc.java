@@ -15,4 +15,7 @@ public class RunPipelineFunc {
         System.out.println("Result:"+ pipeResult);      
         
     }
+    public static String generateMenu(){
+        return "PipelineFunc";
+    }     
 }
